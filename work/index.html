@@ -1,0 +1,64 @@
+---
+layout: default
+title: Work
+---
+
+<div class="work-header fade-in">
+  <p class="work-header__eyebrow">ALL WORK</p>
+  <h1 class="work-header__headline">Twelve projects across data, ML, cloud, and full-stack.</h1>
+</div>
+
+<div class="filters fade-in" id="filters">
+  <button class="filter-pill active" data-filter="all">All <span class="count">12</span></button>
+  <button class="filter-pill" data-filter="data">Data <span class="count">5</span></button>
+  <button class="filter-pill" data-filter="ml">ML <span class="count">4</span></button>
+  <button class="filter-pill" data-filter="cloud">Cloud <span class="count">2</span></button>
+  <button class="filter-pill" data-filter="se">SE <span class="count">3</span></button>
+  <button class="filter-pill" data-filter="business">Business <span class="count">2</span></button>
+</div>
+
+<div class="work-table__header">
+  <span>PROJECT</span>
+  <span>YEAR</span>
+</div>
+<hr class="work-table__rule">
+
+<div id="work-list">
+  {% assign all_projects = site.projects | sort: "order" %}
+  {% for project in all_projects %}
+  <a href="{{ project.url | relative_url }}"
+     class="work-row fade-in"
+     style="display:grid; text-decoration:none;"
+     data-tags="{{ project.tags | join: ',' | downcase | replace: ' ', '-' }}">
+
+    <div class="work-row__thumb">
+      {% if project.thumbnail %}
+        <img src="{{ project.thumbnail | relative_url }}"
+             alt="{{ project.title }} thumbnail"
+             loading="lazy">
+      {% endif %}
+    </div>
+
+    <div>
+      <div class="work-row__title-wrap">
+        <h2 class="work-row__title">{{ project.title }}</h2>
+        {% if project.featured %}<span class="badge--featured">FEATURED</span>{% endif %}
+      </div>
+      <p class="work-row__desc">{{ project.summary }}</p>
+      <div class="tags">
+        {% for tag in project.tags %}
+          <span class="tag">{{ tag | downcase }}</span>
+        {% endfor %}
+      </div>
+    </div>
+
+    <span class="work-row__year">{{ project.year }}</span>
+  </a>
+  {% endfor %}
+</div>
+
+<div class="work-load-more" id="load-more" style="display:none;">
+  <button class="work-load-more__btn" onclick="loadMore()">
+    Load more <span style="color:var(--accent);">↓</span>
+  </button>
+</div>

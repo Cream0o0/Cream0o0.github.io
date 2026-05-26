@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ML Classification Comparison: Tic-Tac-Toe · Worada Rangsriseaneepitak</title>
+  <meta name="description" content="ML classification comparison using Decision Tree, Naive Bayes, and k-NN on tic-tac-toe data with WEKA, covering information gain, confusion matrices, and by-hand probability derivations.">
+  <link rel="canonical" href="http://localhost:4000/work/ml-classification/">
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="/assets/css/main.css">
+
+  <!-- SEO -->
+  <!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>ML Classification Comparison: Tic-Tac-Toe | Worada Rangsriseaneepitak</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="ML Classification Comparison: Tic-Tac-Toe" />
+<meta name="author" content="Worada Rangsriseaneepitak" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="ML classification comparison using Decision Tree, Naive Bayes, and k-NN on tic-tac-toe data with WEKA, covering information gain, confusion matrices, and by-hand probability derivations." />
+<meta property="og:description" content="ML classification comparison using Decision Tree, Naive Bayes, and k-NN on tic-tac-toe data with WEKA, covering information gain, confusion matrices, and by-hand probability derivations." />
+<link rel="canonical" href="http://localhost:4000/work/ml-classification/" />
+<meta property="og:url" content="http://localhost:4000/work/ml-classification/" />
+<meta property="og:site_name" content="Worada Rangsriseaneepitak" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2026-05-25T15:03:57+07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="ML Classification Comparison: Tic-Tac-Toe" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Worada Rangsriseaneepitak"},"dateModified":"2026-05-25T15:03:57+07:00","datePublished":"2026-05-25T15:03:57+07:00","description":"ML classification comparison using Decision Tree, Naive Bayes, and k-NN on tic-tac-toe data with WEKA, covering information gain, confusion matrices, and by-hand probability derivations.","headline":"ML Classification Comparison: Tic-Tac-Toe","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/work/ml-classification/"},"url":"http://localhost:4000/work/ml-classification/"}</script>
+<!-- End Jekyll SEO tag -->
+
+</head>
+<body>
+
+  <div class="container">
+
+    <nav class="nav">
+      <a href="/" class="nav__mark">
+        <span class="nav__dot"></span>
+        worada.dev
+      </a>
+      <ul class="nav__links">
+        <li><a href="/work" class="active">Work</a></li>
+        <li><a href="/about" >About</a></li>
+        <li><a href="/assets/resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+        <li><a href="/contact" >Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <div class="cs-nav">
+  <a href="/work" class="cs-back">&larr; All work</a>
+  
+  <a href="https://github.com/Cream0o0/bayesian-fraud" target="_blank" rel="noopener" class="cs-github-btn">
+    <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-1px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+    View on GitHub
+  </a>
+  
+</div>
+
+<header class="cs-header fade-in">
+  <p class="cs-header__eyebrow">
+    <span class="cs-eyebrow-label">CASE STUDY</span>
+    
+      <span class="tag tag--outline" style="font-size:10px; padding:2px 8px;">ML</span>
+    
+      <span class="tag tag--outline" style="font-size:10px; padding:2px 8px;">DATA</span>
+    
+  </p>
+  <h1 class="cs-header__title">ML Classification Comparison: Tic-Tac-Toe</h1>
+  <p class="cs-header__sub">A machine learning comparison project training and evaluating three classifiers on a tic-tac-toe dataset to predict whether the first player wins, using WEKA for implementation and analysis.</p>
+</header>
+
+
+<div class="cs-hero-img fade-in">
+  <img src="/assets/images/ml-classification.png" alt="ML Classification Comparison: Tic-Tac-Toe"
+       onerror="this.parentElement.classList.add('cs-hero-img--placeholder'); this.remove();">
+</div>
+<p class="cs-hero-caption">FIG 01 &middot; </p>
+
+
+<div class="cs-tldr fade-in">
+  <p class="cs-tldr__label">TLDR</p>
+  <p class="cs-tldr__text">Trained Decision Tree, Naive Bayes, and k-NN classifiers using 10-fold cross-validation on the tic-tac-toe dataset. k-NN achieved 98.96% accuracy across all tested k values. Naive Bayes underperformed at 69.62% due to its independence assumption conflicting with the spatial dependencies between board squares. J48 sat in the middle at 84.55% but offered the added benefit of interpretability.</p>
+  
+  <div style="margin-top: 20px;">
+    <a href="https://github.com/Cream0o0/bayesian-fraud" target="_blank" rel="noopener" class="cs-tldr__github">
+      <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" style="vertical-align:-1px;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      View on GitHub
+    </a>
+  </div>
+  
+</div>
+
+<div class="cs-meta fade-in">
+  <div class="cs-meta__item">
+    <p class="cs-meta__label">ROLE</p>
+    <p class="cs-meta__value">Solo</p>
+  </div>
+  <div class="cs-meta__item">
+    <p class="cs-meta__label">TIMELINE</p>
+    <p class="cs-meta__value">2 weeks</p>
+  </div>
+  <div class="cs-meta__item">
+    <p class="cs-meta__label">CONTEXT</p>
+    <p class="cs-meta__value">Monash MDS, FIT5047 Intelligent Systems</p>
+  </div>
+  
+</div>
+
+<div class="cs-stack fade-in">
+  <div class="tags">
+    
+      <span class="tag tag--outline">Python</span>
+    
+      <span class="tag tag--outline">WEKA</span>
+    
+      <span class="tag tag--outline">J48/C4.5</span>
+    
+      <span class="tag tag--outline">Naive Bayes</span>
+    
+      <span class="tag tag--outline">k-NN</span>
+    
+      <span class="tag tag--outline">Jaccard Similarity</span>
+    
+      <span class="tag tag--outline">Information Gain</span>
+    
+      <span class="tag tag--outline">10-fold Cross-Validation</span>
+    
+  </div>
+</div>
+
+<div class="cs-section fade-in">
+  <p class="cs-section__label">01 · APPROACH</p>
+  <p class="cs-section__body">
+    The task explored how different classification algorithms perform on the same structured dataset and why their results diverge. The tic-tac-toe dataset is interesting because board squares are spatially dependent, which means some classifiers handle the problem naturally while others struggle due to their underlying assumptions.
+  </p>
+  <p class="cs-section__body">
+    Exploratory data analysis in WEKA identified the most predictive attribute before any model was trained. The centre square showed the highest class variation, which makes intuitive sense since controlling the centre allows the most winning lines simultaneously.
+  </p>
+  <p class="cs-section__body">
+    Three models were trained using 10-fold cross-validation. For J48, two values of minNumObj were tested. The more detailed tree (minNumObj=2, size 142, 95 leaves) outperformed the pruned version (minNumObj=5, size 73, 49 leaves) at 84.55% versus 82.67% accuracy. The root split was confirmed as the centre square with a manually calculated information gain of 0.045 bits. Naive Bayes produced 69.62% accuracy, its independence assumption proving problematic since adjacent squares are inherently correlated. For k-NN, three values of k were tested (1, 3, and 5) and all produced identical results at 98.96% accuracy. A by-hand Jaccard coefficient calculation was also performed to manually identify the three nearest neighbours for a given board state, confirming the WEKA prediction.
+  </p>
+</div>
+
+<div class="cs-section fade-in">
+  <p class="cs-section__label">02 · KEY DECISIONS</p>
+  <div class="cs-decisions">
+    <div class="cs-decision">
+      <p class="cs-decision__title">J48 tuned by comparing two minNumObj values</p>
+      <p class="cs-decision__body">Rather than accepting the default, two values were compared. The smaller value captured more specific board patterns and delivered higher accuracy, though the larger value produced a more interpretable tree. The trade-off between complexity and readability was a deliberate consideration.</p>
+    </div>
+    <div class="cs-decision">
+      <p class="cs-decision__title">Naive Bayes included as an explainable baseline</p>
+      <p class="cs-decision__body">Its underperformance on this dataset has a clear cause: board squares are positionally dependent, which violates the independence assumption and inflates false positives. Including it made the comparison more informative than running only high-performing models.</p>
+    </div>
+    <div class="cs-decision">
+      <p class="cs-decision__title">Jaccard similarity over Euclidean distance for k-NN</p>
+      <p class="cs-decision__body">All attributes in the dataset are categorical. Jaccard is the appropriate similarity measure for categorical data; Euclidean distance would have been technically incorrect here.</p>
+    </div>
+  </div>
+</div>
+
+<div class="cs-section fade-in">
+  <p class="cs-section__label">03 · OUTCOME</p>
+  <div class="cs-metrics">
+    <div class="cs-metric">
+      <p class="cs-metric__label">K-NN ACCURACY</p>
+      <p class="cs-metric__value">98.96<span class="cs-metric__unit">%</span></p>
+    </div>
+    <div class="cs-metric">
+      <p class="cs-metric__label">J48 ACCURACY</p>
+      <p class="cs-metric__value">84.55<span class="cs-metric__unit">%</span></p>
+    </div>
+    <div class="cs-metric">
+      <p class="cs-metric__label">NAIVE BAYES</p>
+      <p class="cs-metric__value">69.62<span class="cs-metric__unit">%</span></p>
+    </div>
+  </div>
+  <p class="cs-section__body">
+    k-NN was the clear winner across all metrics, with near-perfect recall of 0.998 meaning it almost never missed an actual win. Naive Bayes had the weakest precision, confirming that its independence assumption caused it to overpredict wins. J48 sat in the middle and offered the added benefit of interpretability through its tree structure. Testing k values of 1, 3, and 5 confirmed the performance plateau was genuine rather than a single-run artefact.
+  </p>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="cs-pagination fade-in">
+  <div>
+    <p class="cs-pagination__dir">PREV</p>
+    
+      <a href="/work/pacman/" class="cs-pagination__link">&larr; Pac-Man Search Strategies</a>
+    
+  </div>
+  <div>
+    <p class="cs-pagination__dir" style="text-align:right;">NEXT</p>
+    
+      <a href="/work" class="cs-pagination__link cs-pagination__link--next">All work &rarr;</a>
+    
+  </div>
+</div>
+
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; 2026 Worada Rangsriseaneepitak</span>
+      <ul class="footer__links">
+        <li><a href="https://github.com/cream0o0" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/wran" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:Wrangsriseaneepitak@gmail.com">Email</a></li>
+      </ul>
+    </footer>
+
+  </div>
+
+  <script src="/assets/js/main.js"></script>
+
+</body>
+</html>

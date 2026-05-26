@@ -1,0 +1,51 @@
+# ─────────────────────────────────────────
+#  Site settings
+# ─────────────────────────────────────────
+title: Worada Rangsriseaneepitak
+description: Data, ML, and cloud systems.
+url: "https://cream0o0.github.io"
+baseurl: ""
+
+# Author
+author:
+  name: Worada Rangsriseaneepitak
+  nickname: Ada
+  email: Wrangsriseaneepitak@gmail.com
+  github: cream0o0
+  linkedin: wran
+
+# ─────────────────────────────────────────
+#  Build settings
+# ─────────────────────────────────────────
+markdown: kramdown
+highlighter: rouge
+permalink: /work/:slug/
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# ─────────────────────────────────────────
+#  Collections
+# ─────────────────────────────────────────
+collections:
+  projects:
+    output: true
+    permalink: /work/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: case-study
+
+# ─────────────────────────────────────────
+#  Exclude from build
+# ─────────────────────────────────────────
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor

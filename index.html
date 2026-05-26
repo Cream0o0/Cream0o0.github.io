@@ -1,0 +1,45 @@
+---
+layout: default
+title: Home
+---
+
+<section class="hero fade-in">
+  <p class="hero__eyebrow">WORADA RANGSRISEANEEPITAK &middot; ADA</p>
+  <h1 class="hero__headline">I build data and ML systems on cloud infrastructure.</h1>
+  <p class="hero__sub">Recent Master of Data Science graduate from Monash, working across data science, cloud engineering, and full-stack development. Open to roles in AU and SEA.</p>
+  <div class="hero__ctas">
+    <a href="{{ '/work' | relative_url }}" class="cta--primary">See selected work &rarr;</a>
+    <a href="{{ '/assets/resume.pdf' | relative_url }}" class="cta--secondary" target="_blank" rel="noopener">Download resume</a>
+  </div>
+</section>
+
+<section class="selected-work">
+  <div class="selected-work__header">
+    <span class="selected-work__label">SELECTED WORK</span>
+    <span class="selected-work__count">04 / 04</span>
+  </div>
+
+  {% assign featured = site.projects | where: "featured", true | sort: "order" %}
+  {% for project in featured %}
+  <a href="{{ project.url | relative_url }}" class="project-row fade-in" style="display:grid; text-decoration:none;">
+    <span class="project-row__num">0{{ forloop.index }}</span>
+    <div>
+      <h2 class="project-row__title">{{ project.title }}</h2>
+      <p class="project-row__desc">{{ project.summary }}</p>
+      <div class="tags">
+        {% for tag in project.tags %}
+          <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <span class="project-row__year">{{ project.year }}</span>
+  </a>
+  {% endfor %}
+
+  <div class="selected-work__footer">
+    <a href="{{ '/work' | relative_url }}" style="font-size:13px; color:var(--text-3);">
+      See all 12 projects <span style="color:var(--accent);">&rarr;</span>
+    </a>
+    <span class="mono" style="font-size:11px; color:var(--muted);">/work</span>
+  </div>
+</section>

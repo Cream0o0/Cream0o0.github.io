@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} · {{ site.author.name }}{% else %}{{ site.author.name }}{% endif %}</title>
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+
+  <!-- Fonts + CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+
+  <!-- SEO -->
+  {% seo %}
+</head>
+<body>
+
+  <div class="container">
+
+    <nav class="nav">
+      <a href="{{ '/' | relative_url }}" class="nav__mark">
+        <span class="nav__dot"></span>
+        worada.dev
+      </a>
+      <ul class="nav__links">
+        <li><a href="{{ '/work' | relative_url }}" {% if page.url contains '/work' %}class="active"{% endif %}>Work</a></li>
+        <li><a href="{{ '/about' | relative_url }}" {% if page.url == '/about/' %}class="active"{% endif %}>About</a></li>
+        <li><a href="{{ '/assets/resume.pdf' | relative_url }}" target="_blank" rel="noopener">Resume</a></li>
+        <li><a href="{{ '/contact' | relative_url }}" {% if page.url == '/contact/' %}class="active"{% endif %}>Contact</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer class="footer">
+      <span class="footer__copy">&copy; {{ 'now' | date: '%Y' }} {{ site.author.name }}</span>
+      <ul class="footer__links">
+        <li><a href="https://github.com/{{ site.author.github }}" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://linkedin.com/in/{{ site.author.linkedin }}" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+      </ul>
+    </footer>
+
+  </div>
+
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+</body>
+</html>

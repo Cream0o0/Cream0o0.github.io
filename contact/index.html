@@ -1,0 +1,29 @@
+---
+layout: default
+title: Contact
+---
+
+<div class="fade-in" style="margin-bottom: var(--space-xl);">
+  <p class="about-hero__eyebrow">CONTACT</p>
+  <h1 class="about-hero__headline">Get in touch.</h1>
+  <p style="font-size:16px; line-height:1.65; color:var(--text-3); max-width:480px; margin-top:var(--space-md);">Open to data science, ML engineering, cloud, and analytics roles in AU and SEA. Feel free to reach out via email or LinkedIn.</p>
+</div>
+
+<div class="contact-grid fade-in" style="max-width:520px;">
+  <div class="contact-card">
+    <p class="contact-card__label">EMAIL</p>
+    <a href="mailto:{{ site.author.email }}" class="contact-card__value">{{ site.author.email }}</a>
+  </div>
+  <div class="contact-card">
+    <p class="contact-card__label">LINKEDIN</p>
+    <a href="https://linkedin.com/in/{{ site.author.linkedin }}" class="contact-card__value" target="_blank" rel="noopener">linkedin.com/in/{{ site.author.linkedin }}</a>
+  </div>
+  <div class="contact-card">
+    <p class="contact-card__label">GITHUB</p>
+    <a href="https://github.com/{{ site.author.github }}" class="contact-card__value" target="_blank" rel="noopener">github.com/{{ site.author.github }}</a>
+  </div>
+  <div class="contact-card">
+    <p class="contact-card__label">RESUME</p>
+    <a href="{{ '/assets/resume.pdf' | relative_url }}" class="contact-card__value" target="_blank" rel="noopener">Download PDF</a>
+  </div>
+</div>
